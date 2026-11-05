@@ -21,4 +21,10 @@ describe('GET /info', () => {
     expect(res.body.node).toMatch(/^v\d+\.\d+\.\d+/)
     expect(res.body.uptime).toBeGreaterThanOrEqual(0)
   })
+
+  it('responds with JSON containing exactly name, version, node, uptime', async () => {
+    const res = await request(app).get('/info')
+    expect(res.headers['content-type']).toMatch(/application\/json/)
+    expect(Object.keys(res.body).sort()).toEqual(['name', 'node', 'uptime', 'version'])
+  })
 })
