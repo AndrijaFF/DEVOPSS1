@@ -21,7 +21,6 @@ describe('GET /version', () => {
   })
 })
 
-
 describe('DEVOPS-1 - version consistency', () => {
   it('returns the exact version defined in package.json', async () => {
     const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
